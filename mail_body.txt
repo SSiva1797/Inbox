@@ -1,0 +1,5 @@
+Dear User
+
+Please find the attachment with your requested data about our client.
+The attach file is password protected and the default password for the same is in the form of 'user@ddmmyyyy'
+ where user is username in lowercase and ddmmyyyy is Date of Birth(in ddmmyyyy Format)

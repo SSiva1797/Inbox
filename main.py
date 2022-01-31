@@ -1,14 +1,15 @@
+import os
 import imaplib
 import email
 
 host = 'imap.gmail.com'
-username = 'varuns17997@gmail.com'
-password = 'Jimmy@2017'
+USERNAME = os.environ.get("MAIL_USER")
+PASSWORD = os.environ.get("MAIL_PASS")
 
 
 def get_inbox():
     mail = imaplib.IMAP4_SSL(host)
-    mail.login(username, password)
+    mail.login(USERNAME, PASSWORD)
     mail.select("inbox")
     _, search_data = mail.search(None, 'UNSEEN')
     my_message = []
@@ -35,4 +36,7 @@ def get_inbox():
 if __name__ == "__main__":
     my_inbox = get_inbox()
     print(my_inbox)
-# print(search_data)
+    for message in my_inbox:
+        data = message["body"]+"\n"
+        with open("mail_body.txt", "w") as file:
+            file.write(data)
